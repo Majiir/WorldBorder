@@ -117,7 +117,10 @@ public class WorldFillTask implements Runnable
 		if (pausedForMemory)
 		{	// if available memory gets too low, we automatically pause, so handle that
 			if (Config.AvailableMemory() < 500)
+			{
+				System.gc();
 				return;
+			}
 
 			pausedForMemory = false;
 			sendMessage("Available memory is sufficient, automatically continuing.");
